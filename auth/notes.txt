@@ -1,0 +1,12 @@
+const mongo = await MongoMemoryServer.create();
+const mongoUri = mongo.getUri();
+
+Remove the useNewUrlParser and useUnifiedTopology parameters from the connect method. Change this:
+
+  await mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+to this:
+
+  await mongoose.connect(mongoUri, {});
