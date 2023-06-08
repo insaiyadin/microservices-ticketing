@@ -16,3 +16,11 @@ build:
         manual:
           - dest: .
             src: "src/**/*.ts"
+    - image: insaiyadin/ticketing-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
