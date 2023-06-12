@@ -6,13 +6,13 @@ interface UserAttrs {
   password: string;
 }
 
-interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc;
-}
-
 interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
+}
+
+interface UserModel extends mongoose.Model<UserDoc> {
+  build(attrs: UserAttrs): UserDoc;
 }
 
 const userSchema = new mongoose.Schema(
