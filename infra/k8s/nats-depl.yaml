@@ -15,6 +15,22 @@ spec:
       containers:
         - name: nats
           image: nats-streaming:0.25.4
+          args:
+            [
+              "-p",
+              "4222",
+              "-m",
+              "8222",
+              "-hbi",
+              "5s",
+              "-hbt",
+              "5s",
+              "-hbf",
+              "2",
+              "-SD",
+              "-cid",
+              "ticketing",
+            ]
 ---
 apiVersion: v1
 kind: Service
@@ -24,7 +40,11 @@ spec:
   selector:
     app: nats
   ports:
-    - name: nats
+    - name: client
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 4222
+      targetPort: 4222
+    - name: monitoring
+      protocol: TCP
+      port: 8222
+      targetPort: 8222
