@@ -32,6 +32,25 @@ build:
         manual:
           - dest: .
             src: "src/**/*.ts"
+
+    - image: insaiyadin/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+
+    - image: insaiyadin/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+
     - image: insaiyadin/orders
       context: orders
       docker:
